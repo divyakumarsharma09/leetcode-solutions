@@ -1,0 +1,25 @@
+class Solution {
+    public int numberOfPoints(List<List<Integer>> nums) {
+        boolean[] covered = new boolean[101];
+
+        for (List<Integer> range : nums) {
+            int left = range.get(0);
+            int right = range.get(1);
+
+            while (left <= right) {
+                covered[left] = true;
+                left++;
+            }
+        }
+
+        int count = 0;
+
+        for (boolean point : covered) {
+            if (point) {
+                count++;
+            }
+        }
+
+        return count;
+    }
+}
