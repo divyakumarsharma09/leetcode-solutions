@@ -1,0 +1,19 @@
+class Solution {
+    public boolean reorderedPowerOf2(int n) {
+        int[] target = countDigits(n);
+        for (int value = 1; value <= 1_000_000_000; value <<= 1) {
+            if (Arrays.equals(target, countDigits(value))) {
+                return true;
+            }
+        }
+        return false;
+    }
+    private int[] countDigits(int number) {
+        int[] frequency = new int[10];
+        while (number > 0) {
+            frequency[number % 10]++;
+            number /= 10;
+        }
+        return frequency;
+    }
+}
